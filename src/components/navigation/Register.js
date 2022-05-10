@@ -9,15 +9,21 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Input from '@mui/material/Input';
+import FormHelperText from '@mui/material/FormHelperText';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { DatePicker } from '@mui/x-date-pickers';
 
 
 export default function InputAdornments() {
   const [values, setValues] = React.useState({
     username: '',
-    DOB: '2020-01-01',
+    first_name:'',
+    last_name:'',
+    email:'',
+    DOB: new Date,
     password: '',
     password_repeat: '',
     showPassword:false,
@@ -25,11 +31,28 @@ export default function InputAdornments() {
   });
 
   const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+    let username
+    if(prop=="first_name"){
+        username=`${event.target.value.toLowerCase()}.${values.last_name.toLocaleLowerCase()}`
+    }else if(prop=="last_name"){
+        username=`${values.first_name.toLowerCase()}.${event.target.value.toLowerCase()}`
+    }else{
+        username=`${values.first_name.toLowerCase()}.${values.last_name.toLocaleLowerCase()}`
+    }
+    // const year = values.DOB.getFullYear()
+    // const month = values.DOB.getMonth()
+    // const day = values.DOB.getday()
+    // console.log(`${year}-${month}-${day}` )
+    // const year = values.DOB.getFullYear()
+    // const month = values.DOB.getMonth()
+    // const day = values.DOB.getDay()
+    // console.log(year,month,day)
+    setValues({ ...values, [prop]: event.target.value, username:username },);
+    setValues({ ...values, [prop]: event.target.value, username:username },);
     console.log(values)
   };
-  const handleDateCHange = (newValue) =>{
-      console.log(newValue)
+  const handleDateChange = (newValue) =>{
+    console.log(newValue)
       setValues({...values, DOB:newValue})
       console.log(values)
   }
@@ -55,8 +78,8 @@ const handleClickShowRepeatPassword = () => {
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       <div>
         <Typography variant="h4">Register</Typography>
-        <FormControl sx={{ m: 1 , width: '25ch', display:'block'}}>
-          <InputLabel htmlFor="usernamet">Username</InputLabel>
+        <FormControl sx={{ m: 1,display:'block'}} disabled>
+          <InputLabel htmlFor="username">Username</InputLabel>
           <OutlinedInput
             id="username"
             value={values.username}
@@ -64,18 +87,54 @@ const handleClickShowRepeatPassword = () => {
             label="username"
           />
         </FormControl>
-        
-        <LocalizationProvider dateAdapter={AdapterDateFns} dateFormats='keyboardDate'>
-            <MobileDatePicker
-            label="Date mobile"
-            inputFormat="yyyy/MM/dd"
-            value={values.DOB}
-            onChange={handleDateCHange}
-            renderInput={(params) => <TextField {...params} />}
-            />
-        </LocalizationProvider> 
 
-        <FormControl sx={{ m: 1, width: '25ch', display:'block' }} variant="outlined">
+        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
+          <InputLabel htmlFor="first_name">First Name</InputLabel>
+          <OutlinedInput
+            id="first_name"
+            value={values.first_name}
+            onChange={handleChange('first_name')}
+            label="First Name"
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
+          <InputLabel htmlFor="last_name">Last Name</InputLabel>
+          <OutlinedInput
+            id="last_name"
+            value={values.last_name}
+            onChange={handleChange('last_name')}
+            label="Last Name"
+          />
+        </FormControl>
+        
+        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
+            <LocalizationProvider dateAdapter={AdapterDateFns} >
+                <DatePicker
+                mask="____/__/__"
+                openTo="year"
+                views={['year', 'month', 'day']}
+                // mask="yyyy/MM/dd"
+                label="DOB"
+                inputFormat="yyyy/MM/dd"
+                value={values.DOB}
+                onChange={handleDateChange}
+                renderInput={(params) => <TextField {...params} />}
+                />
+            </LocalizationProvider> 
+        </FormControl>
+
+        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <OutlinedInput
+            id="email"
+            value={values.email}
+            onChange={handleChange('email')}
+            label="email"
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, minWidth: '25ch',width:'40%'}} variant="outlined">
           <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
             id="password"
@@ -98,7 +157,7 @@ const handleClickShowRepeatPassword = () => {
           />
         </FormControl>
 
-        <FormControl sx={{ m: 1, width: '25ch' , display:'block'}} variant="outlined">
+        <FormControl sx={{ m: 1, minWidth: '25ch',width:'40%'}} variant="outlined">
           <InputLabel htmlFor="password">Repeat Password</InputLabel>
           <OutlinedInput
             id="repeat_password"
