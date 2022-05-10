@@ -10,11 +10,14 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Input from '@mui/material/Input';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import FormHelperText from '@mui/material/FormHelperText';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DatePicker } from '@mui/x-date-pickers';
+import axios from 'axios'
 
 
 export default function InputAdornments() {
@@ -39,15 +42,6 @@ export default function InputAdornments() {
     }else{
         username=`${values.first_name.toLowerCase()}.${values.last_name.toLocaleLowerCase()}`
     }
-    // const year = values.DOB.getFullYear()
-    // const month = values.DOB.getMonth()
-    // const day = values.DOB.getday()
-    // console.log(`${year}-${month}-${day}` )
-    // const year = values.DOB.getFullYear()
-    // const month = values.DOB.getMonth()
-    // const day = values.DOB.getDay()
-    // console.log(year,month,day)
-    setValues({ ...values, [prop]: event.target.value, username:username },);
     setValues({ ...values, [prop]: event.target.value, username:username },);
     console.log(values)
   };
@@ -74,67 +68,95 @@ const handleClickShowRepeatPassword = () => {
     event.preventDefault();
   };
 
+
+  function handleSubmit(event){
+      event.preventDefault()
+        const year = values.DOB.getFullYear()
+        const month = values.DOB.getMonth()
+        const day = values.DOB.getDay()
+        const DOB = `${year}-${month}-${day}`
+      const submitValues = {...values,DOB:DOB}
+      console.log(submitValues)
+      async function register(){
+          try{
+              const res = await axios.post("http://127.0.0.1:8000/users/register", submitValues)
+              console.log(res)
+          }catch(e){
+              console.log(e)
+          }
+
+      }
+      register()
+  }
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-      <div>
-        <Typography variant="h4">Register</Typography>
-        <FormControl sx={{ m: 1,display:'block'}} disabled>
-          <InputLabel htmlFor="username">Username</InputLabel>
-          <OutlinedInput
-            id="username"
-            value={values.username}
-            onChange={handleChange('username')}
-            label="username"
-          />
-        </FormControl>
-
-        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
-          <InputLabel htmlFor="first_name">First Name</InputLabel>
-          <OutlinedInput
-            id="first_name"
-            value={values.first_name}
-            onChange={handleChange('first_name')}
-            label="First Name"
-          />
-        </FormControl>
-
-        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
-          <InputLabel htmlFor="last_name">Last Name</InputLabel>
-          <OutlinedInput
-            id="last_name"
-            value={values.last_name}
-            onChange={handleChange('last_name')}
-            label="Last Name"
-          />
-        </FormControl>
+    <Box component="form" onSubmit={handleSubmit} sx={{ display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
         
-        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
-            <LocalizationProvider dateAdapter={AdapterDateFns} >
-                <DatePicker
-                mask="____/__/__"
-                openTo="year"
-                views={['year', 'month', 'day']}
-                // mask="yyyy/MM/dd"
-                label="DOB"
-                inputFormat="yyyy/MM/dd"
-                value={values.DOB}
-                onChange={handleDateChange}
-                renderInput={(params) => <TextField {...params} />}
-                />
-            </LocalizationProvider> 
-        </FormControl>
+        <Box sx={{ display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
+        
+            <Typography sx={{textAlign:'center', flex:'auto', marginBottom:'10px'}}variant="h4">Registration</Typography>
+            <FormControl sx={{m: 1, minWidth:'35ch', width:'50%'}} disabled>
+            <InputLabel htmlFor="username">Username: First Name.Last Name</InputLabel>
+            <OutlinedInput
+                id="username"
+                value={values.username}
+                onChange={handleChange('username')}
+                label="username"
+            />
+            </FormControl>
+        </Box>
+        
+        <Box sx={{display:'flex', justifyContinent:'center', flexWrap:'wrap',justifyContent:'center', alignItems:'center'}}>
+            <FormControl sx={{ m: 1, minWidth: '31ch',flex:'1'}}>
+            <InputLabel htmlFor="first_name">First Name</InputLabel>
+            <OutlinedInput
+                id="first_name"
+                value={values.first_name}
+                onChange={handleChange('first_name')}
+                label="First Name"
+            />
+            </FormControl>
 
-        <FormControl sx={{ m: 1 , minWidth: '25ch',width:'40%'}}>
-          <InputLabel htmlFor="email">Email</InputLabel>
-          <OutlinedInput
-            id="email"
-            value={values.email}
-            onChange={handleChange('email')}
-            label="email"
-          />
-        </FormControl>
+            <FormControl sx={{ m: 1, minWidth: '31ch',flex:'1'}}>
+            <InputLabel htmlFor="last_name">Last Name</InputLabel>
+            <OutlinedInput
+                id="last_name"
+                value={values.last_name}
+                onChange={handleChange('last_name')}
+                label="Last Name"
+            />
+            </FormControl>
+        </Box>
 
-        <FormControl sx={{ m: 1, minWidth: '25ch',width:'40%'}} variant="outlined">
+        <Box sx={{display:'flex', justifyContinent:'center', flexWrap:'wrap', justifyContent:'center', alignItems:'center'}}>
+            <FormControl sx={{ m: 1, minWidth: '25ch',flex:'1'}}>
+                <LocalizationProvider dateAdapter={AdapterDateFns} >
+                    <DatePicker
+                    mask="____/__/__"
+                    openTo="year"
+                    views={['year', 'month', 'day']}
+                    // mask="yyyy/MM/dd"
+                    label="Date of Birth"
+                    inputFormat="yyyy/MM/dd"
+                    value={values.DOB}
+                    onChange={handleDateChange}
+                    renderInput={(params) => <TextField {...params} />}
+                    />
+                </LocalizationProvider> 
+            </FormControl>
+
+            <FormControl sx={{ m: 1, minWidth: '31ch',flex:'1'}}>
+            <InputLabel htmlFor="email">Email</InputLabel>
+            <OutlinedInput
+                id="email"
+                value={values.email}
+                onChange={handleChange('email')}
+                label="email"
+            />
+            </FormControl>
+        </Box>
+
+        <Box sx={{display:'flex', justifyContinent:'center', flexWrap:'wrap', justifyContent:'center', alignItems:'center'}}>
+        <FormControl sx={{ m: 1, minWidth: '25ch',flex:'1'}} variant="outlined">
           <InputLabel htmlFor="password">Password</InputLabel>
           <OutlinedInput
             id="password"
@@ -157,7 +179,7 @@ const handleClickShowRepeatPassword = () => {
           />
         </FormControl>
 
-        <FormControl sx={{ m: 1, minWidth: '25ch',width:'40%'}} variant="outlined">
+        <FormControl sx={{ m: 1, minWidth: '25ch',flex:'1'}} variant="outlined">
           <InputLabel htmlFor="password">Repeat Password</InputLabel>
           <OutlinedInput
             id="repeat_password"
@@ -179,7 +201,8 @@ const handleClickShowRepeatPassword = () => {
             label="repeat_password"
           />
         </FormControl>
-      </div>
+        </Box>
+        <Button size='large' sx={{display:"block", margin:'0 auto', marginTop:'10px'}}onClick={handleSubmit} variant="outlined">Register</Button>
       
     </Box>
   );
