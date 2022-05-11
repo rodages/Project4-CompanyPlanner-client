@@ -18,9 +18,11 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DatePicker } from '@mui/x-date-pickers';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 
 export default function InputAdornments() {
+  const navigate=useNavigate()
   const [values, setValues] = React.useState({
     username: '',
     first_name:'',
@@ -80,8 +82,13 @@ const handleClickShowRepeatPassword = () => {
       async function register(){
           try{
               const res = await axios.post("http://127.0.0.1:8000/users/register", submitValues)
-              console.log(res)
+              //navigate to login
+              if(res.status==201){
+                navigate("/login")
+              }
           }catch(e){
+              //handle errors with form validators OR SNACK BAR
+
               console.log(e)
           }
 
@@ -95,13 +102,13 @@ const handleClickShowRepeatPassword = () => {
         
             <Typography sx={{textAlign:'center', flex:'auto', marginBottom:'10px'}}variant="h4">Registration</Typography>
             <FormControl sx={{m: 1, minWidth:'35ch', width:'50%'}} disabled>
-            <InputLabel htmlFor="username">Username: First Name.Last Name</InputLabel>
-            <OutlinedInput
-                id="username"
-                value={values.username}
-                onChange={handleChange('username')}
-                label="username"
-            />
+                <InputLabel htmlFor="username">Username: First Name.Last Name</InputLabel>
+                <OutlinedInput
+                    id="username"
+                    value={values.username}
+                    onChange={handleChange('username')}
+                    label="username"
+                />
             </FormControl>
         </Box>
         
