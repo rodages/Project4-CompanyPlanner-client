@@ -19,6 +19,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { DatePicker } from '@mui/x-date-pickers';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import URL from '../../config'
 
 
 export default function InputAdornments() {
@@ -81,7 +82,7 @@ const handleClickShowRepeatPassword = () => {
       console.log(submitValues)
       async function register(){
           try{
-              const res = await axios.post("http://127.0.0.1:8000/users/register", submitValues)
+              const res = await axios.post(`${URL}users/register`, submitValues)
               //navigate to login
               if(res.status==201){
                 navigate("/login")

@@ -3,13 +3,14 @@ import {Link, Outlet} from "react-router-dom"
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
-import NavTest from "./NavTest";
+import Navbar from "./Navbar";
+
 
 function Layout({loggedIn, user, setLoggedIn}){
     console.log(user,"user")
     return(
     <>
-        <NavTest loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>
+        <Navbar loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>
 
         <Outlet />
         

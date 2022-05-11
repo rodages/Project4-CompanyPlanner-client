@@ -3,10 +3,13 @@ import {useState,useEffect} from 'react'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
+import URL from '../../config'
 
 import { Box, Typography, FormControl, InputLabel, OutlinedInput,InputAdornment,IconButton, Button } from '@mui/material'
 import {Visibility, VisibilityOff } from '@mui/icons-material'
 import { setSourceMapRange } from 'typescript'
+
+
 
 function Login({setLoggedIn, setUser}){
     const navigate=useNavigate()
@@ -40,7 +43,7 @@ function Login({setLoggedIn, setUser}){
         console.log(formData)
         async function login(){
             try{
-                const res = await axios.post("http://127.0.0.1:8000/api/token/",formData)
+                const res = await axios.post(`${URL}api/token/`,formData)
                 console.log(res)
                 if(res.statusText=="OK"){
                     console.log("this runs")
@@ -52,7 +55,7 @@ function Login({setLoggedIn, setUser}){
                     console.log(userID)
                     async function getUserInfo(){
                         try{
-                            const res = await axios.get(`http://127.0.0.1:8000/users/update/${userID}`)
+                            const res = await axios.get(`${URL}users/update/${userID}`)
                             console.log(res.data)
                             setUser({...res.data})
                             navigate('/')
