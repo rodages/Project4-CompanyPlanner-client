@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import URL from '../config'
+import URL from '../../config'
 
 import DepartmentCard from './DepartmentCard'
+
+
 import Box from '@mui/material/Box'
 
 
@@ -15,7 +17,7 @@ function Departments(){
     useEffect(()=>{
         async function fetchDepartments(){
             try{
-                const res = await axios.get(`${URL}departments`)
+                const res = await axios.get(`${URL}/departments`)
                 setDepartments(res.data)
 
             }catch(e){
@@ -35,7 +37,7 @@ function Departments(){
         justifyContent="center"
         alignItems="center"
             >
-            
+
             {departments.map((department,i)=><DepartmentCard department={department} key={i}/>)}
         </Box>
         

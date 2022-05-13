@@ -7,7 +7,6 @@ import URL from '../../config'
 
 import { Box, Typography, FormControl, InputLabel, OutlinedInput,InputAdornment,IconButton, Button } from '@mui/material'
 import {Visibility, VisibilityOff } from '@mui/icons-material'
-import { setSourceMapRange } from 'typescript'
 
 
 
@@ -43,7 +42,8 @@ function Login({setLoggedIn, setUser}){
         console.log(formData)
         async function login(){
             try{
-                const res = await axios.post(`${URL}api/token/`,formData)
+                const res = await axios.post(`${URL}/api/token/`,formData)
+                console.log("response")
                 console.log(res)
                 if(res.statusText=="OK"){
                     console.log("this runs")
@@ -55,10 +55,11 @@ function Login({setLoggedIn, setUser}){
                     console.log(userID)
                     async function getUserInfo(){
                         try{
-                            const res = await axios.get(`${URL}users/update/${userID}`)
+                            const res = await axios.get(`${URL}/users/update/${userID}`)
                             console.log(res.data)
                             setUser({...res.data})
-                            navigate('/')
+                            navigate('/departments')
+                            console.log("finished")
                         }catch(e){
                             console.log(e)
                         }

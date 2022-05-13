@@ -2,6 +2,7 @@ import {Link, Outlet} from "react-router-dom"
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import Navbar from "./Navbar";
 
@@ -11,8 +12,9 @@ function Layout({loggedIn, user, setLoggedIn}){
     return(
     <>
         <Navbar loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>
-
-        <Outlet />
+        <Box pb='50px' pt='60px'>
+            <Outlet/>
+        </Box>
         
         {/* Footer */}
         <Box style={{
@@ -20,11 +22,13 @@ function Layout({loggedIn, user, setLoggedIn}){
           left: 0,
           bottom: 0,
           right: 0,
+          height: '40px',
+          
         }}>
-            <BottomNavigation>
-                <Link to='#about'>
-                    <p>About</p>
-                </Link>
+            <BottomNavigation style={{backgroundColor:'#1F4A9F', display:'flex', justifyContent:'center', alignItems:'center', paddingBottom:'10px'}}>
+                <Button style={{color:'white', backgroundColor:'#1F4A9F', borderColor:'white'}} href="#about">
+                    About
+                </Button>
             </BottomNavigation>
         </Box>
     </>

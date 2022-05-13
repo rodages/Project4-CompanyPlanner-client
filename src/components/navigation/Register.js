@@ -82,7 +82,7 @@ const handleClickShowRepeatPassword = () => {
       console.log(submitValues)
       async function register(){
           try{
-              const res = await axios.post(`${URL}users/register`, submitValues)
+              const res = await axios.post(`${URL}/users/register`, submitValues)
               //navigate to login
               if(res.status==201){
                 navigate("/login")

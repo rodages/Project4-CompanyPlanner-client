@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import {useState} from 'react'
 import Layout from './components/navigation/Layout'
+import './App.css'
 
 // import GetDepartment from './testing/GetDepartment'
 //navigation
@@ -10,8 +11,11 @@ import Login from './components/navigation/Login'
 import Register from './components/navigation/Register'
 
 //links
-import Departments from "./departments/Depatments"
-import DepartmentDetails from "./departments/DepartmentDetails"
+import Departments from "./components/departments/Depatments"
+import DepartmentDetails from "./components/departments/DepartmentDetails"
+
+import Tasks from "./components/checklists/Tasks"
+import Items from "./components/checklists/Items"
 
 
 function App() {
@@ -31,6 +35,15 @@ function App() {
 
         <Route path="/departments" element={<Departments />}/>
         <Route path="/departments/:id" element={<DepartmentDetails />} />
+
+        <Route path="/tasks" element={<Tasks />} />
+        {/* <Route path="/tasks/:id" element={<TaskDetails />} /> */}
+        
+        <Route path="/items" element={<Items />} />
+        {/*<Route path="/items/:id" element={<ItemDetails />} />
+
+        <Route path="/checklists" element={<Checklists />} />
+        <Route path="/checklists/:id" element={<ChecklistDetails />} /> */}
 
 
 
