@@ -3,7 +3,7 @@ import { useParams, useLocation} from 'react-router-dom'
 import axios from 'axios';
 import URL from '../../config'
 
-import Departments from './Depatments';
+import Departments from './Departments';
 import DepartmentCard from './DepartmentCard';
 import WorkersTable from './WorkersTable'
 import DepartmentChecklists from './DepartmentChecklists'

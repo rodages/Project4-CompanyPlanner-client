@@ -7,6 +7,7 @@ import CustomListItem from './CustomListItem'
 import ListSubheader from '@mui/material/ListSubheader';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 
 
@@ -36,21 +37,23 @@ function Tasks(){
     }
 
     return(
-        <>
-        <Typography align='center' variant="h4" gutterBottom component="div"> Currently Submitted Tasks</Typography>
-        <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin:'auto'}}
-      component="nav"
-      aria-labelledby="submitted-tasks"
-    //   subheader={
-    //     <ListSubheader component="div" id="submitted-tasks">
-    //       Currently Submitted Tasks
-    //     </ListSubheader>
-    //     }
-        >
-            {tasks.map((task,index)=><CustomListItem key={index}  listItem={task} type="task"/>)}
-    </List>
-    </>
+        <div>
+            <Typography align='center' variant="h4" gutterBottom component="div"> Currently Submitted Tasks
+            <div></div><Button onClick={()=>navigate('/new/task')
+            } variant="outlined">Add Task</Button></Typography>
+            <List
+        sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', margin:'auto'}}
+        component="nav"
+        aria-labelledby="submitted-tasks"
+        //   subheader={
+        //     <ListSubheader component="div" id="submitted-tasks">
+        //       Currently Submitted Tasks
+        //     </ListSubheader>
+        //     }
+            >
+                {tasks.map((task,index)=><CustomListItem key={index}  listItem={task} type="task"/>)}
+            </List>
+    </div>
     )
 }
 

@@ -58,7 +58,7 @@ function Post({post}){
                 
                 {post.createdBy} 
             </CardHeader>
-            <CardContent>
+            <CardContent sx={{paddingTop:'0'}}>
                 <Typography variant="subtitle1" gutterBottom>
                     {post.content}
                 </Typography>

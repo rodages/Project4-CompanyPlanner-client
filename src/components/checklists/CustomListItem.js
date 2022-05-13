@@ -44,7 +44,7 @@ function CustomListItem({listItem}){
                 -  Subsection:  {listItem.section_name}
             </Typography>
             <Typography variant="body2">
-                {listItem.extra_from_checklist_amount>0? `Extra from Checklist: ${listItem.extra_from_checklist_amount}`:''}
+                {listItem.extra_from_checklist_amount>0? `-  Extra from checklist: ${listItem.extra_from_checklist_amount}`:''}
                 {/* -Used in:  {listItem?.checklist_tems.length>0?`${listItem.checklist_tasks.join(', ')} checklists`:'Not in Use '} */}
             </Typography>
         </CardContent>

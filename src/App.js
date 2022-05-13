@@ -11,8 +11,10 @@ import Login from './components/navigation/Login'
 import Register from './components/navigation/Register'
 
 //links
-import Departments from "./components/departments/Depatments"
+import Departments from "./components/departments/Departments"
 import DepartmentDetails from "./components/departments/DepartmentDetails"
+
+import Checklists from "./components/checklists/Checklists"
 
 import Tasks from "./components/checklists/Tasks"
 import Items from "./components/checklists/Items"
@@ -40,10 +42,10 @@ function App() {
         {/* <Route path="/tasks/:id" element={<TaskDetails />} /> */}
         
         <Route path="/items" element={<Items />} />
-        {/*<Route path="/items/:id" element={<ItemDetails />} />
+        {/* <Route path="/items/:id" element={<ItemDetails />} /> */}
 
         <Route path="/checklists" element={<Checklists />} />
-        <Route path="/checklists/:id" element={<ChecklistDetails />} /> */}
+        {/*<Route path="/checklists/:id" element={<ChecklistDetails />} /> */}
 
 
 

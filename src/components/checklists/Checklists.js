@@ -1,55 +1,54 @@
-import * as React from 'react';
-import ListSubheader from '@mui/material/ListSubheader';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import URL from '../../config'
+import ChecklistItem from './ChecklistItem'
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { Typography } from '@mui/material'
 
-export default function NestedList() {
-  const [open, setOpen] = React.useState(true);
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+function Checklists(){
+  const [checklists, SetChecklists] = useState([])
+    const navigate = useNavigate()
+    console.log(checklists,`checklists`)
 
-  return (
-    <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Nested List Items
-        </ListSubheader>
-      }
-    >
+    useEffect(()=>{
+        async function fetchChecklists(){
+            try{
+                const res = await axios.get(`${URL}/checklists`)
+                SetChecklists(res.data)
+
+            }catch(e){
+                console.log(e)
+            }
+        }
+
+        fetchChecklists()
+    },[])
+    if(checklists.length<1){
+      return <h1>Fetching</h1>
+    }
+  return(
+
+      <Box style={{margin:'0 auto',width: '80%'}}>
+        <Typography>All Existing Checklists</Typography>
+          <Stack direction="row" spacing={2}>
+            {checklists.map((checklist,index)=><ChecklistItem key={index} checklist={checklist} />)}
+          </Stack>
+        </Box>
 
 
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
-        </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItemButton>
-      
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
-        </List>
-      </Collapse>
-    </List>
-  );
+  )
 }
+
+export default Checklists

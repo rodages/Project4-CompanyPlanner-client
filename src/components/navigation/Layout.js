@@ -12,20 +12,19 @@ function Layout({loggedIn, user, setLoggedIn}){
     return(
     <>
         <Navbar loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>
-        <Box pb='50px' pt='60px'>
+        <Box pb='50px' pt='100px' minHeight="95vh" sx={{display:'flex', flexDirection:'column', justifyContent:'start'}}>
             <Outlet/>
         </Box>
         
         {/* Footer */}
         <Box style={{
-          position: "fixed",
+          position: "static",
           left: 0,
           bottom: 0,
-          right: 0,
-          height: '40px',
+          right: 0
           
         }}>
-            <BottomNavigation style={{backgroundColor:'#1F4A9F', display:'flex', justifyContent:'center', alignItems:'center', paddingBottom:'10px'}}>
+            <BottomNavigation style={{backgroundColor:'#1F4A9F', display:'flex', justifyContent:'center', alignItems:'center', paddingBottom:'10px', height:'50px'}}>
                 <Button style={{color:'white', backgroundColor:'#1F4A9F', borderColor:'white'}} href="#about">
                     About
                 </Button>
