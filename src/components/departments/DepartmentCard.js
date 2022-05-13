@@ -14,7 +14,7 @@ function DepartmentCard({department}){
 
     const styles = {
         image :{
-            width: '100%',
+            width: '500px',
             margin: 'auto',
             height:'auto'
         }

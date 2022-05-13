@@ -9,6 +9,7 @@ import Navbar from './components/navigation/NavbarTemplate' // template
 import NavTest from './components/navigation/Navbar'
 import Login from './components/navigation/Login'
 import Register from './components/navigation/Register'
+import Home from './Home'
 
 //links
 import Departments from "./components/departments/Departments"
@@ -18,6 +19,7 @@ import Checklists from "./components/checklists/Checklists"
 
 import Tasks from "./components/checklists/Tasks"
 import Items from "./components/checklists/Items"
+import NewItemOrTask from "./components/forms/NewItemOrTask"
 
 
 function App() {
@@ -31,6 +33,7 @@ function App() {
         <Route path="/" element = {<Layout 
         loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>}>
 
+        <Route index element={<Home  loggedIn={loggedIn} user={user}/>} />
         <Route path="/login" element={ <Login setLoggedIn={setLoggedIn} setUser={setUser} />} />
         <Route path="/register" element={<Register />}/>
 
@@ -48,6 +51,7 @@ function App() {
         {/*<Route path="/checklists/:id" element={<ChecklistDetails />} /> */}
 
 
+        <Route path="new/:destination" element={<NewItemOrTask />} />
 
           <Route index element = {<h1>Index</h1>} />
 

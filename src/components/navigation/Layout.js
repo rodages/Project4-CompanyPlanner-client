@@ -24,7 +24,7 @@ function Layout({loggedIn, user, setLoggedIn}){
           right: 0
           
         }}>
-            <BottomNavigation style={{backgroundColor:'#1F4A9F', display:'flex', justifyContent:'center', alignItems:'center', paddingBottom:'10px', height:'50px'}}>
+            <BottomNavigation style={{backgroundColor:'#1F4A9F', display:'flex', justifyContent:'center', alignItems:'center',  height:'auto'}}>
                 <Button style={{color:'white', backgroundColor:'#1F4A9F', borderColor:'white'}} href="#about">
                     About
                 </Button>

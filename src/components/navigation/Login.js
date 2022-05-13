@@ -48,6 +48,7 @@ function Login({setLoggedIn, setUser}){
                 if(res.statusText=="OK"){
                     console.log("this runs")
                     console.log(res)
+                    console.log(JSON.stringify(res.data.access))
                     setAccessToken(res.data.access);
                     setRefreshToken(res.data.refresh);
                     setLoggedIn(true)

@@ -162,7 +162,7 @@ function Navbar({loggedIn, user, setLoggedIn}) {
     );
 
     return (
-        <Box sx={{ flexGrow: 1, marginBottom:'20px', position:'fixed', width:'100%', height:'60px', zIndex:10}}>
+        <Box sx={{ flexGrow: 1, position:'fixed', width:'100%', zIndex:10}}>
         <AppBar position="static" style={{backgroundColor:'#1F4A9F',boxShadow:'0 0px 10px 5px rgb(0 0 0 / 20%)'}}>
             <Toolbar>
             <Link to="/" style={{color:'white', textDecoration:'none', marginTop:'-15px', marginLeft:'-15px'}}>

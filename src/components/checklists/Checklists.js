@@ -6,6 +6,7 @@ import ChecklistItem from './ChecklistItem'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material'
 
@@ -41,7 +42,9 @@ function Checklists(){
   return(
 
       <Box style={{margin:'0 auto',width: '80%'}}>
-        <Typography>All Existing Checklists</Typography>
+        <Typography align='center' variant="h4" gutterBottom component="div"> Currently created checklists
+            <div></div><Button onClick={()=>navigate('/createchecklist')
+            } variant="outlined">Create new checklist</Button></Typography>
           <Stack direction="row" spacing={2}>
             {checklists.map((checklist,index)=><ChecklistItem key={index} checklist={checklist} />)}
           </Stack>
