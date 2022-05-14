@@ -19,6 +19,14 @@ function CustomListItem({listItem}){
     const handleClick = () => {
       setOpen(!open);
     };
+
+    const styles = {
+        media: {
+          height: 0,
+          paddingTop: '56.25%', // 16:9,
+          marginTop:'30'
+        }
+    };
     return(
         <>
         <ListItemButton onClick={handleClick}>
@@ -33,9 +41,12 @@ function CustomListItem({listItem}){
             {listItem.image?
             <CardMedia
                 component="img"
-                height="140"
                 image={listItem.image}
                 alt="green iguana"
+                style={{
+                    width: "auto",
+                    maxHeight: "200px",
+                  }}
             />:''}
             <Typography variant="body2">
                 -  Notes: {listItem.comment? listItem.comment : "None"}
@@ -51,6 +62,7 @@ function CustomListItem({listItem}){
       </ListItemText>
 
       </CardActionArea>
+      
         </Collapse>
         </>
     )

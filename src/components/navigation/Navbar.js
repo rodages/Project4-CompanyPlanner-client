@@ -128,10 +128,10 @@ function Navbar({loggedIn, user, setLoggedIn}) {
         onClick={()=>navigate('/departments')}>
                <Typography ><CorporateFareOutlinedIcon/>Departments</Typography>
         </MenuItem>
-        <MenuItem
+        {/* <MenuItem
         onClick={()=>navigate('/shifts')}>
                <Typography ><AccessTimeOutlinedIcon/>Shifts</Typography>
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem
         onClick={()=>navigate('/checklists')}>
                <Typography ><ListAltOutlinedIcon/>Checklists</Typography>
@@ -190,9 +190,9 @@ function Navbar({loggedIn, user, setLoggedIn}) {
                     <Typography ><CorporateFareOutlinedIcon/>Departments</Typography>
                 </Link>
 
-                <Link to='/shifts' style={{color:'white', textDecoration:'none', marginTop:'5px' }}>
+                {/* <Link to='/shifts' style={{color:'white', textDecoration:'none', marginTop:'5px' }}>
                     <Typography ><AccessTimeOutlinedIcon/>Shifts</Typography>
-                </Link>
+                </Link> */}
 
                 <Link to='/checklists' style={{color:'white', textDecoration:'none', marginTop:'5px' }}>
                     <Typography ><ListAltOutlinedIcon/>Checklists</Typography>

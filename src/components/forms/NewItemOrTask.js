@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 function NewItemOrTask({endpoint}){
     let urlEndPoint = endpoint
     let params = useParams()
+    //takes destination-task or item from url if they are not provided by props
     if(!urlEndPoint) urlEndPoint = params.destination
 
     const navigate=useNavigate()
@@ -31,15 +32,7 @@ function NewItemOrTask({endpoint}){
         "Pier Works",
         "Kitchen"
         ]
-    const taskOptionsdict = [
-        {"Pre-Departure": "Pre-Departure"},
-        {Briefing: "Briefing"},
-        {"Sightseeing Boat": "Sightseeing Boat"},
-        {"Last Cruise of the day": "Last Cruise of the day"},
-        {"Pier Works": "Pier Works"},
-        {Kitchen: "Kitchen"},
-        {Other: "Other"},
-    ]
+
     const itemOptions = [
         "Other",
         "Crockery",
@@ -49,15 +42,7 @@ function NewItemOrTask({endpoint}){
         "Drinks Bar",
         "Supervising"
     ]
-    const itemOptionsdict = [
-        {"Crockery": "Crockery"},
-        {"Cutlery": "Cutlery"},
-        {"Serving Tools": "Serving Tools"},
-        {"Food Serivce Area": "Food Serivce Area"},
-        {"Drinks Bar": "Drinks Bar"},
-        {"Supervising": "Supervising"},
-        {"Other": "Other"},
-    ]
+
 
     const ITEM_HEIGHT = 48;
     const ITEM_PADDING_TOP = 8;

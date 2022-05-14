@@ -45,8 +45,8 @@ function Checklists(){
         <Typography align='center' variant="h4" gutterBottom component="div"> Currently created checklists
             <div></div><Button onClick={()=>navigate('/createchecklist')
             } variant="outlined">Create new checklist</Button></Typography>
-          <Stack direction="row" spacing={2}>
-            {checklists.map((checklist,index)=><ChecklistItem key={index} checklist={checklist} />)}
+          <Stack direction="row" spacing={2} style={{display:'flex',flexWrap:'wrap'}}>
+            {checklists.map((checklist,index)=><ChecklistItem  key={index} checklist={checklist} />)}
           </Stack>
         </Box>
 

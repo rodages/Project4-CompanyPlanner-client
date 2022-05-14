@@ -20,6 +20,7 @@ import Checklists from "./components/checklists/Checklists"
 import Tasks from "./components/checklists/Tasks"
 import Items from "./components/checklists/Items"
 import NewItemOrTask from "./components/forms/NewItemOrTask"
+import CreateChecklist from "./components/checklists/CreateChecklist"
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         {/* <Route path="/items/:id" element={<ItemDetails />} /> */}
 
         <Route path="/checklists" element={<Checklists />} />
+        <Route path="/createchecklist" element={<CreateChecklist />} />
         {/*<Route path="/checklists/:id" element={<ChecklistDetails />} /> */}
 
 
