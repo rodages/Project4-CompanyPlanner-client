@@ -20,6 +20,15 @@ function Login({setLoggedIn, setUser}){
     const [accessToken, setAccessToken] = useLocalStorage("accessToken", "");
     const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken", "");
 
+    useEffect(()=>{
+
+        async function testingDeployedDatabase(){
+            const res = await axios.get("https://seiproject4.herokuapp.com/users/users/")
+            console.log(res)
+        }
+        testingDeployedDatabase()
+    },[])
+
     function handleChange(e){
 
         console.log(e.target.id, e.target.value)

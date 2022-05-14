@@ -55,7 +55,6 @@ function App() {
 
         <Route path="new/:destination" element={<NewItemOrTask />} />
 
-          <Route index element = {<h1>Index</h1>} />
 
 
         </Route>
