@@ -73,9 +73,7 @@ function NewItemOrTask({endpoint}){
         e.preventDefault()
         const token =JSON.parse(localStorage.getItem('accessToken'))
         console.log(token)
-        console.log(`Bearer ${token.replaceAll('"','')}`)
         let submissionPoint
-        console.log(formData)
         if(urlEndPoint=='task'){
             submissionPoint='tasks'
         }else if(urlEndPoint=='item'){
@@ -83,9 +81,13 @@ function NewItemOrTask({endpoint}){
         }
         async function submit(){
             try{
+                const jsonData = JSON.stringify(formData)
+                console.log(jsonData,"data")
+                console.log(`Bearer ${token.replaceAll('"','')}`)
+                console.log(`submitting to ${URL}/${submissionPoint}/`)
                 const res = await axios.post(
                     `${URL}/${submissionPoint}/`, 
-                JSON.stringify(formData),
+                    formData,
                 {
                     headers: {
                       Authorization: `Bearer ${token.replaceAll('"','')}`,

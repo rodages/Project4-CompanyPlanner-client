@@ -1,1 +1,26 @@
-Front end for GA SEI Project4
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) GA London SEI Project-4-CompanyPlanner
+
+## TABLE OF CONTENTS
+
+- [Overview](#overview)
+  - [Brief](#brief)
+  - [Technologies Used](#technologies)
+  - [Installation](#installation)
+  - [Demo](#demo)
+- [Development](#development)
+  - [Planning](#planning)
+  - [Login/Register](#login-register)
+  - [Departments](#departments)
+    - [Department](#department)
+    - [Posts](#posts)
+    - [Staff](#staff)
+    - [Checklists](#checklists)
+  - [Items](#items)
+  - [Tasks](#tasks)
+  - [Checklists](#checklists)
+  - [Styling](#styling)
+- [Difficulties and Wins](#difficulties-wins)
+  - [Known Bugs](#bugs)
+  - [Challenges and Wins](#challenges-wins)
+- [Future Improvements](#future-improvements)
+- [Key Learnings](#key-learnings)
