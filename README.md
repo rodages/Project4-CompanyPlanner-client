@@ -217,9 +217,11 @@ The component could have been DRY'ied up by making a separate sorting function a
 
 ## <a name='future-improvements'>Future improvements</a>
 
-- If I would have had more time - my main priority would have been to place validations and permission for posting to prevent API from crashing if unregistered user tries to post Item/Task/Checklist.
+- If I would have had more time - my main priority would have been to place validations and permission for posting to prevent API from crashing if unregistered user tries to post Item/ Task/ Checklist.
 
 - Second most important aspect would be to implement `Shifts` functionality. I have managed to make it work on the API side and was really looking forward to making it a capstone of the project by building the frontend for it too.
+
+- Seeding some meaningful data. At the moment all data online is from testing the routes and components.
 
 - Inserting error validators to forms to provide better user experience.
 
