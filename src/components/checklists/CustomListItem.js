@@ -42,7 +42,7 @@ function CustomListItem({listItem}){
             <CardMedia
                 component="img"
                 image={listItem.image}
-                alt="green iguana"
+                alt="item image"
                 style={{
                     width: "auto",
                     maxHeight: "200px",

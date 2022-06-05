@@ -13,7 +13,7 @@ function Layout({loggedIn, user, setLoggedIn}){
     <>
         <Navbar loggedIn={loggedIn} user={user} setLoggedIn={setLoggedIn}/>
         <Box height='60px'></Box>
-        <Box minHeight="100vh" sx={{display:'flex', flexDirection:'column', justifyContent:'start'}}>
+        <Box minHeight="90vh" sx={{display:'flex', flexDirection:'column', justifyContent:'start'}}>
             <Outlet/>
         </Box>
         

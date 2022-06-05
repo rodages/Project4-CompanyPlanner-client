@@ -13,11 +13,10 @@ const styles = {
         backgroundSize:'cover',
         backgroundRepeat:'no-repeat',
         height:'90vh',
-        border:'1px solid red',
         color:'white',
         display:'flex',
         flexDirection:'column',
-        alignItems:'center'
+        alignItems:'center',
     },
     boxContainer:{
         display:'flex',

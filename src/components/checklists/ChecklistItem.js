@@ -14,7 +14,7 @@ function ChecklistItem({checklist}){
             <CardHeader 
                 action={
                 <IconButton aria-label="edit">
-                    <EditIcon onClick={(e) => console.log("clocked")} />
+                    <EditIcon onClick={(e) => console.log("clicked")} />
                 </IconButton>}
                 title={<Typography variant="h4" gutterBottom component="div">
                     {checklist.name}
