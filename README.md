@@ -28,17 +28,17 @@
 
 **To view deployed project please click [here](https://companyplanner.netlify.app/).**
 
-The last project at General Assembly's (GA) Software Engineering Immersive (SEI-Flex) bootcamp was to build a full-stack application with Python Django REST framework for the back-end and ReactJS for the front-end.
+The last project on General Assembly's Software Engineering Immersive bootcamp was to build a full-stack application with Python Django REST framework for the backend and ReactJS for the frontend.
 
-We had an option to go the solo route, or do it as a group. I wanted to test out my skills by making a full-stack solo CMS(Content Management System)-ish project.
+We had an option to go the solo route, or do it as a group. I wanted to test out my skills by making a full-stack solo CMS (Content Management System)-ish project.
 
 My initial thoughts for the project were also to make an e-commerce site or social media clone, but I decided to make something more unique rather than just another clone for coding bootcamp.
 
-I have decided to make a project aimed to solve the paper wastage at my current employment. At the moment most of the documents are being filled-in in a paper format and are being transferred to the computer by the administrator.
+I decided to make a project aimed to solve the paper wastage at my current employment. Currently, most of the documents are being filled-in in a paper format and are being transferred to the computer by the administrator.
 
 I was unable to implement all features that I wanted due to time constraints of doing this project while working full-time at my existing employment, which was entering the peak season at the point of making this project.
 
-However, I am happy that I was able to go above the initial MVP, learned to work with Material UI and gained the foundations to work with the Python Django REST framework to build a quite complex API compared to what has been thought during the course.
+However, I am happy that I was able to go above the initial MVP, learned to work with Material UI and gained the foundations to work with the Python Django REST framework to build a quite complex API compared to what has been taught during the course.
 
 ### <a name='brief'>Brief</a>
 
@@ -68,6 +68,9 @@ Development tools: VS Code, NPM, Insomnia/Postman, Git, Heroku, Netlify.
 ### <a name='planning'>Planning</a>
 
 **Backend planning can be seen [here](https://github.com/rodages/Project4-CompanyPlanner-API).**
+
+![ERD](./screenshots/ERD.png "ERD")
+
 ![Sketch](./screenshots/project4FrontEndSketch.png "Sketch")
 
 The app was supposed to have 6 main aspects - `landing page`, `departments`, `shifts` - was the ultimate stretch goal, which I was unable to implement on the front end due to lack of time, `checklists`, `items/tasks` and `login/register`. The more detailed breakdown of each component and planning for it is explained below:
@@ -76,7 +79,7 @@ The app was supposed to have 6 main aspects - `landing page`, `departments`, `sh
 
 ![Login Register](./screenshots/LoginRegister.PNG "Login Register")
 
-- The Registration component has the `Username` field set to inactive - it takes values from `First Name` and `Last Name` to create a username consisting of both values lowercased i.e. `jane.doe` .
+- The Registration component has the `Username` field set to inactive - it takes values from `First Name` and `Last Name` to create a username consisting of both values in lowercase i.e. `jane.doe` .
 
 ```
  <LocalizationProvider dateAdapter={AdapterDateFns} >
@@ -93,9 +96,9 @@ The app was supposed to have 6 main aspects - `landing page`, `departments`, `sh
                 </LocalizationProvider>
 ```
 
-- `Date of Birth` field uses a date picker provided by MUI for better customer experience compared to typing it in as prompted.
+- `Date of Birth` field uses a `date picker` from `MUI` library for a better customer experience compared to typing it in as prompted.
 
-Mask and inputFormat had to be provided the component to correctly set up the order of year, month and day.
+Mask and inputFormat had to be provided to the component to correctly set up the order of year, month and day.
 
 ```
 <InputLabel htmlFor="password">Password</InputLabel>
@@ -144,7 +147,7 @@ followed by navigating the user to `/departments`.
 
 ![Departments list](./screenshots/departments.gif "Departments list")
 
-The departments route provides a list of all available departments within the company. By clicking on the selected department will give more detailed information with the following tabs `department`, `posts`, `staff`, `checklists` further explained below.
+The department's route provides a list of all available departments within the company. By clicking on the selected department will give more detailed information with the following tabs: `department`, `posts`, `staff`, `checklists` further explained below.
 
 #### <a name='department'>Department</a>
 
@@ -177,11 +180,11 @@ As it was my first time working with the framework some places have lots of inli
 
 - Due to time constraints I have not included form validations and error handling for form inputs. Due to this at the current state of the project - the user would not have the best experience when trying to register an account with an already existing username, or entering invalid login credentials.
 
-- All site navigation including posting currently is available to everyone, but on the API side - only registered users can create posts/items/tasks/checklists. If anyone tries to do it without logging in - they will crash the server.
+- All site navigation including posting currently is available to everyone, but on the API side - only registered users can create posts/ items/ tasks/ checklists. If anyone tries to do it without logging in - they will crash the server.
 
 ### <a name='challenges-wins'>Challenges and Wins</a>
 
-- using the `useLocalStorage` hook from the internet helped me to quickly set up tokens in the local storage compared to the third project where I had to tackle the problem myself from scratch.
+- Using the `useLocalStorage` hook from the internet helped me to quickly set up tokens in the local storage compared to the third project where I had to tackle the problem myself from scratch.
 
 \*newItemOrTask component tackles upload for both paths depending on which route has been chosen. It takes parameters from the URL using the `useParams() hook and uses the keyword to render the correct form.
 
@@ -201,7 +204,7 @@ One form parameter should never go below 0 - to tackle it the above validation w
       }}
 ```
 
-However, the important note was passing an empty object as the first argument to the function - it returns an HTML node rather than selected options. This caused bugs until an actual solution has been found.
+However, the important note was passing an empty object as the first argument to the function - it returns an HTML node rather than selected options. This caused bugs until an actual solution had been found.
 
 - Staff table sorting by role and alphabetical order.
 
@@ -217,7 +220,7 @@ The component could have been DRY'ied up by making a separate sorting function a
 
 ## <a name='future-improvements'>Future improvements</a>
 
-- If I would have had more time - my main priority would have been to place validations and permission for posting to prevent API from crashing if unregistered user tries to post Item/ Task/ Checklist.
+- If I would have had more time - my main priority would have been to place validations and permission for posting to prevent the API from crashing if an unregistered user tries to post Item/ Task/ Checklist.
 
 - Second most important aspect would be to implement `Shifts` functionality. I have managed to make it work on the API side and was really looking forward to making it a capstone of the project by building the frontend for it too.
 
@@ -239,6 +242,6 @@ The component could have been DRY'ied up by making a separate sorting function a
 
 - Time management was the key for this project - I believe I have spent a bit too much time trying to implement `shifts` functionality - which was the ultimate stretch goal, which made a huge strain on implementing other features.
 
-- Debugging the Python Django application was much harder and less intuitive than working with JS, where I feel quite comfortable with debugging. I have used a debugger inside VSCode for python, which helped me to understand the process a bit better.
+- Debugging the Python Django application was much harder and less intuitive than working with JavaScript, where I feel quite comfortable with debugging. I have used a debugger inside VSCode for Python, which helped me to understand the process a bit better.
 
 - Working solo on such a big project allowed me to be flexible with planning and helped me to grow as a developer as I had to solve all problems by myself. I have also read much more official documentation than while working on previous projects where I relied more on finding solutions on StackOverflow and other platforms.
