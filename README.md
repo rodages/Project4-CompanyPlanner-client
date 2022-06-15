@@ -252,6 +252,3 @@ The component could have been DRY'ied up by making a separate sorting function a
 - Debugging the Python Django application was much harder and less intuitive than working with JS, where I feel quite comfortable with debugging. I have used a debugger inside VSCode for Python, which helped me to understand the process a bit better.
 
 - Working solo on such a big project allowed me to be flexible with planning and helped me to grow as a developer as I had to solve all problems by myself. I have also read much more official documentation than while working on previous projects where I relied more on finding solutions on StackOverflow and other platforms.
-
-
-)
